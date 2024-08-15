@@ -40,7 +40,7 @@
   become: true
   ansible.builtin.shell: >
     podman login
-      --authfile ~/.config/containers/auth.json
+      --authfile {{ edpm_podman_auth_file }}
       --username={{ edpm_nodeset_name }}
       --password={{ lookup('ansible.builtin.file', edpm_podman_kube_sa_path + '/token') }}
       {{ edpm_podman_kube_registry_url }}
